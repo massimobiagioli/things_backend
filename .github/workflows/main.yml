@@ -12,7 +12,9 @@ jobs:
       - name: Create virtualenv
         run: python3 -m venv .venv
       - name : Activate virtualenv
-        run: source .venv/bin/activate
+        run: |
+          . .venv/bin/activate
+          echo PATH=$PATH >> $GITHUB_ENV
       - name: Install dependencies
         run: poetry install
       - name: Stop the server
