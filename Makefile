@@ -1,4 +1,4 @@
-.PHONY: help start-local black isort flake8 test coverage
+.PHONY: help start-local black isort flake8 bandit test coverage
 
 default: help
 
@@ -18,6 +18,9 @@ isort:		## Run isort
 
 flake8:		## Run flake8
 	poetry run flake8 $(APP_NAME)
+
+bandit:		## Run bandit
+	poetry run bandit --ini .bandit
 
 test:		## Run tests
 ifdef filter
