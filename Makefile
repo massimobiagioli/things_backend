@@ -1,4 +1,4 @@
-.PHONY: help start-local black isort test coverage
+.PHONY: help start-local black isort flake8 test coverage
 
 default: help
 
@@ -15,6 +15,9 @@ black:		## Run black
 
 isort:		## Run isort
 	poetry run isort .
+
+flake8:		## Run flake8
+	poetry run flake8 $(APP_NAME)
 
 test:		## Run tests
 ifdef filter
