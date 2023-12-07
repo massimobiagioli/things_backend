@@ -1,4 +1,4 @@
-.PHONY: help start-local black test coverage
+.PHONY: help start-local black isort test coverage
 
 default: help
 
@@ -12,6 +12,9 @@ start-local:	## Start local server
 
 black:		## Run black
 	poetry run black .
+
+isort:		## Run isort
+	poetry run isort .
 
 test:		## Run tests
 ifdef filter

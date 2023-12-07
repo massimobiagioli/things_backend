@@ -1,7 +1,7 @@
 from functools import lru_cache
 
 from fastapi import FastAPI
-from fastapi_mqtt import MQTTConfig, FastMQTT
+from fastapi_mqtt import FastMQTT, MQTTConfig
 
 from things_backend.mqtt import start_mqtt
 from things_backend.routes import health, tester
