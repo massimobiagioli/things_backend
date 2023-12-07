@@ -4,25 +4,25 @@ default: help
 
 APP_NAME=things_backend
 
-help:           ## Show this help.
-	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
+help: # Show help for each of the Makefile recipes.
+	@grep -E '^[a-zA-Z0-9 -]+:.*#'  Makefile | sort | while read -r l; do printf "\033[1;32m$$(echo $$l | cut -f 1 -d':')\033[00m:$$(echo $$l | cut -f 2- -d'#')\n"; done
 
-start-local:	## Start local server
+start-local:	# Start local server
 	uvicorn $(APP_NAME).main:app --reload
 
-black:		## Run black
+black:		# Run black
 	poetry run black .
 
-isort:		## Run isort
+isort:		# Run isort
 	poetry run isort .
 
-flake8:		## Run flake8
+flake8:		# Run flake8
 	poetry run flake8 $(APP_NAME)
 
-bandit:		## Run bandit
+bandit:		# Run bandit
 	poetry run bandit --ini .bandit
 
-test:		## Run tests
+test:		# Run tests
 ifdef filter
 	poetry run pytest $(filter) -vv
 else
