@@ -17,6 +17,9 @@ jobs:
           echo "Virtual Env: $VIRTUAL_ENV"
       - name: Install dependencies
         run: poetry install
+      - name: Create .env from secret
+        run: |
+          echo "MQTT_BROKER_HOST=${{ secrets.MQTT_BROKER_HOST }}" >> .env
       - name: Stop the server
         run: pm2 stop things_backend 2> /dev/null
       - name: Start the server
