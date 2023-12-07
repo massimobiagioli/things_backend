@@ -1,12 +1,4 @@
-from fastapi import FastAPI
-
-app = FastAPI()
-
-
-@app.get("/health")
-async def main_route():
-    return {"status": "ok"}
-
+from things_backend.app import app
 
 if __name__ == "__main__":
     import uvicorn
