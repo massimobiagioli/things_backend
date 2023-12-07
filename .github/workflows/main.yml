@@ -21,8 +21,10 @@ jobs:
         run: |
           echo "MQTT_BROKER_HOST=${{ secrets.MQTT_BROKER_HOST }}" >> .env
           echo "MQTT_BROKER_PORT=${{ secrets.MQTT_BROKER_PORT }}" >> .env
-          echo "MQTT_BROKER_USERNAME=${{ secrets.MQTT_BROKER_USER }}" >> .env
+          echo "MQTT_BROKER_USER=${{ secrets.MQTT_BROKER_USER }}" >> .env
           echo "MQTT_BROKER_PASSWORD=${{ secrets.MQTT_BROKER_PASSWORD }}" >> .env
+      - name: Launch Tests
+        run: make test
       - name: Stop the server
         run: pm2 stop things_backend 2> /dev/null
       - name: Start the server
