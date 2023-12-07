@@ -15,7 +15,9 @@ jobs:
         run: source .venv/bin/activate
       - name: Install dependencies
         run: poetry install
+      - name: Stop the server
+        run: pm2 stop things_backend 2> /dev/null
       - name: Start the server
-        run: pm2 stop things_backend 2> /dev/null || true && pm2 start things_backend/main.py --name things_backend
+        run: pm2 start things_backend/main.py --name things_backend
       - name: Save pm2 process
         run: pm2 save
