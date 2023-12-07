@@ -1,4 +1,4 @@
-.PHONY: help start-local test coverage
+.PHONY: help start-local black test coverage
 
 default: help
 
@@ -9,6 +9,9 @@ help:           ## Show this help.
 
 start-local:	## Start local server
 	uvicorn $(APP_NAME).main:app --reload
+
+black:		## Run black
+	poetry run black .
 
 test:		## Run tests
 ifdef filter

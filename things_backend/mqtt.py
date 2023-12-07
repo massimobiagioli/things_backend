@@ -13,7 +13,13 @@ def start_mqtt(mqtt: FastMQTT) -> None:
 
     @mqtt.subscribe("my/mqtt/topic/#")
     async def message_to_topic(client, topic, payload, qos, properties):
-        print("Received message to specific topic: ", topic, payload.decode(), qos, properties)
+        print(
+            "Received message to specific topic: ",
+            topic,
+            payload.decode(),
+            qos,
+            properties,
+        )
 
     @mqtt.on_disconnect()
     def disconnect(client, packet, exc=None):
