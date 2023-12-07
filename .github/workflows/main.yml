@@ -21,6 +21,7 @@ jobs:
         run: pm2 stop things_backend 2> /dev/null
       - name: Start the server
         run: |
+          source .venv/bin/activate
           echo "Python Interpreter: $VIRTUAL_ENV/bin/python"
           pm2 start things_backend/main.py --name things_backend --interpreter $VIRTUAL_ENV/bin/python
       - name: Save pm2 process
