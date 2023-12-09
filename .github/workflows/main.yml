@@ -26,7 +26,7 @@ jobs:
       - name: Launch Tests
         run: make test
       - name: Stop the server
-        run: pm2 stop things_backend 2> /dev/null
+        run: pm2 stop things_backend 2> /dev/null || true
       - name: Start the server
         run: pm2 start "make serve" --name things_backend
       - name: Save pm2 process
